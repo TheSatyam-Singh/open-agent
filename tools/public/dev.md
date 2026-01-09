@@ -4,7 +4,7 @@
 
 This project is a monorepo using Node.js, Yarn (Berry), NestJS, Rspack, and Rust. You can run it fully natively without Docker.
 
-#### Prerequisites
+### Prerequisites
 
 - Node.js 18–22 (engine: node < 23)
 - Yarn 4 (Berry) — the repo sets `packageManager: yarn@4.9.1`

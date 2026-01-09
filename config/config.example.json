@@ -40,7 +40,10 @@
     "providers.anthropic": {
       "apiKey": ""
     },
-    "providers.morph": {},
+    "providers.morph": {
+      "apiKey": "",
+      "endpoint": ""
+    },
     "providers.geminiVertex": {
       "project": "",
       "location": "us-central1",
