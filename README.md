@@ -35,23 +35,51 @@ Play with it, deploy it, enhance it, or use it as the foundation for your next d
 
 ---
 
-## 💻 How to deploy
+## 💻 How to run natively
 
-1. copy `.docker/config.example.json` and `.docker/docker-compose.yml` to a separate folder.
+1. Install prerequisites (Node.js 18–22, Yarn 4, Rust toolchain, a local Postgres 16+ instance, and Redis if you want caching).
+
+2. Install dependencies from the repo root:
 
 ```sh
-mkdir deploy
-cd deploy
-cp ../.docker/config.example.json ./config.json
-cp ../.docker/docker-compose.yml ./docker-compose.yml
+yarn install
 ```
 
-2. Edit `config.json` and add your API keys.
-
-3. Run with Docker Compose.
+3. Configure the app and environment:
 
 ```sh
-docker compose up -d
+cp packages/backend/server/.env.example packages/backend/server/.env
+cp config/config.example.json config/config.json
+```
+
+Fill in database credentials plus any API keys you want to enable.
+
+4. Build native pieces once:
+
+```sh
+yarn oa @afk/server-native build
+```
+
+5. Start the stack natively:
+
+```sh
+# backend API
+yarn dev:server
+
+# web app
+yarn dev:web
+
+# desktop shell (Electron)
+yarn dev:electron
+
+# or run web + server together
+yarn dev
+```
+
+6. To produce native desktop bundles for macOS/Windows/Linux:
+
+```sh
+yarn workspace @afk/electron make
 ```
 
 ## 🤝 Contributing
