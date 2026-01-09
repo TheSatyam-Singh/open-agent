@@ -75,9 +75,10 @@ export class CertCommand extends Command {
     const nginxConfTemp = TEMPLATES_DIR.join('nginx.conf')
       .readAsFile()
       .toString('utf-8');
+    const certDir = CERT_DIR.toString().replaceAll('\\', '/');
     const nginxConf = nginxConfTemp
       .replaceAll('DEV_DOMAIN', domain)
-      .replaceAll('DEV_CERT_DIR', CERT_DIR.toString());
+      .replaceAll('DEV_CERT_DIR', certDir);
     nginxConfPath.writeFile(nginxConf);
   }
 
