@@ -106,6 +106,6 @@ yarn dev:server   # runs backend server (NestJS, listens on 3010 by default)
 - If Node is outside the supported range, switch via `nvm`, `fnm`, or similar.
 - If ports are taken, change `OPEN_AGENT_SERVER_PORT` or Rspack devServer port in `packages/frontend/app/rspack.config.js`.
 - The web dev server proxies `/api` and `/graphql` to `http://localhost:3010` by default.
-- When login, you may be prompted to verify your email. If you run MailHog (or another SMTP catcher) locally, the example settings expect it at `http://localhost:8025`.
+- When logging in, you may be prompted to verify your email. If you run MailHog (or another SMTP catcher) locally, the example settings expect it at `http://localhost:8025`.
 
 ---
