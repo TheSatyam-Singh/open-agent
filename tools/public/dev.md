@@ -2,14 +2,15 @@
 
 ## ⚙️ Quick Start
 
-This project is a monorepo using Node.js, Yarn (Berry), NestJS, Rspack, and Rust. To run locally, you can install Docker and run the dependencies via Docker Compose.
+This project is a monorepo using Node.js, Yarn (Berry), NestJS, Rspack, and Rust. You can run it fully natively without Docker.
 
-#### Prerequisites
+### Prerequisites
 
 - Node.js 18–22 (engine: node < 23)
 - Yarn 4 (Berry) — the repo sets `packageManager: yarn@4.9.1`
 - Rust toolchain (for native packages)
-- Docker + Docker Compose (Orbstack recommended)
+- Postgres 16+ (local service)
+- Redis (optional, for cache and queues)
 
 #### 1) Install dependencies
 
@@ -17,19 +18,24 @@ This project is a monorepo using Node.js, Yarn (Berry), NestJS, Rspack, and Rust
 yarn
 ```
 
-#### 2) Start backend dependencies (Docker Compose)
+#### 2) Start backend dependencies locally
 
-Copy `.docker/dev/compose.yml.example` to `docker-compose.yml` (if you don’t have one).
+Make sure Postgres is running and reachable (defaults match `.env.example`):
 
-Then:
+- host: `localhost`
+- port: `5432`
+- user/password/database: `open-agent`
 
-```bash
-docker compose -f ./.docker/dev/compose.yml up
-```
+Redis is optional but recommended; point `REDIS_SERVER_HOST` to your instance if you enable it.
 
 #### 3) Configure environment
 
-Defaults are sensible for local dev. You can export or add to a `.env` file at the repo root or `packages/backend/server/`.
+Defaults are sensible for local dev. You can export or add to a `.env` file at the repo root or `packages/backend/server/`. Also copy the app config to keep provider keys together:
+
+```bash
+cp packages/backend/server/.env.example packages/backend/server/.env
+cp config/config.example.json config/config.json
+```
 
 ```bash
 # Example .env values for local development.
@@ -100,6 +106,6 @@ yarn dev:server   # runs backend server (NestJS, listens on 3010 by default)
 - If Node is outside the supported range, switch via `nvm`, `fnm`, or similar.
 - If ports are taken, change `OPEN_AGENT_SERVER_PORT` or Rspack devServer port in `packages/frontend/app/rspack.config.js`.
 - The web dev server proxies `/api` and `/graphql` to `http://localhost:3010` by default.
-- When login, you may be prompted to verify your email. The code will be sent to the local mailhog server at `http://localhost:8025`.
+- When logging in, you may be prompted to verify your email. If you run MailHog (or another SMTP catcher) locally, the example settings expect it at `http://localhost:8025`.
 
 ---

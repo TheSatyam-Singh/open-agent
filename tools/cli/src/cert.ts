@@ -2,10 +2,11 @@ import { type Path, ProjectRoot } from '@afk-tools/utils/path';
 
 import { Command, Option } from './command';
 
-const CERT_DIR = ProjectRoot.join('.docker/dev/certs');
+const DEV_ASSETS_DIR = ProjectRoot.join('native-dev');
+const CERT_DIR = DEV_ASSETS_DIR.join('certs');
 const CA_DIR = CERT_DIR.join('ca');
-const TEMPLATES_DIR = ProjectRoot.join('.docker/dev/templates');
-const NGINX_CONF_DIR = ProjectRoot.join('.docker/dev/nginx/conf.d');
+const TEMPLATES_DIR = DEV_ASSETS_DIR.join('templates');
+const NGINX_CONF_DIR = DEV_ASSETS_DIR.join('nginx/conf.d');
 const CA_PEM_PATH = CA_DIR.join('open-agent-self-signed.pem');
 const CA_KEY_PATH = CA_DIR.join('open-agent-self-signed.key');
 
@@ -74,7 +75,10 @@ export class CertCommand extends Command {
     const nginxConfTemp = TEMPLATES_DIR.join('nginx.conf')
       .readAsFile()
       .toString('utf-8');
-    const nginxConf = nginxConfTemp.replaceAll('DEV_DOMAIN', domain);
+    const certDir = CERT_DIR.toString().replaceAll('\\', '/');
+    const nginxConf = nginxConfTemp
+      .replaceAll('DEV_DOMAIN', domain)
+      .replaceAll('DEV_CERT_DIR', certDir);
     nginxConfPath.writeFile(nginxConf);
   }
 

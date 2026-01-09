@@ -240,9 +240,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "fs"
-                  ]
+                  "enum": ["fs"]
                 },
                 "bucket": {
                   "type": "string"
@@ -262,9 +260,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "aws-s3"
-                  ]
+                  "enum": ["aws-s3"]
                 },
                 "bucket": {
                   "type": "string"
@@ -294,9 +290,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "cloudflare-r2"
-                  ]
+                  "enum": ["cloudflare-r2"]
                 },
                 "bucket": {
                   "type": "string"
@@ -361,9 +355,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "fs"
-                  ]
+                  "enum": ["fs"]
                 },
                 "bucket": {
                   "type": "string"
@@ -383,9 +375,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "aws-s3"
-                  ]
+                  "enum": ["aws-s3"]
                 },
                 "bucket": {
                   "type": "string"
@@ -415,9 +405,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "cloudflare-r2"
-                  ]
+                  "enum": ["cloudflare-r2"]
                 },
                 "bucket": {
                   "type": "string"
@@ -484,15 +472,9 @@
           "description": "The enabled transports for accepting websocket traffics.\n@default [\"websocket\",\"polling\"]\n@link https://docs.nestjs.com/websockets/gateways#transports",
           "items": {
             "type": "string",
-            "enum": [
-              "websocket",
-              "polling"
-            ]
+            "enum": ["websocket", "polling"]
           },
-          "default": [
-            "websocket",
-            "polling"
-          ]
+          "default": ["websocket", "polling"]
         },
         "maxHttpBufferSize": {
           "type": "number",
@@ -820,9 +802,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "fs"
-                  ]
+                  "enum": ["fs"]
                 },
                 "bucket": {
                   "type": "string"
@@ -842,9 +822,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "aws-s3"
-                  ]
+                  "enum": ["aws-s3"]
                 },
                 "bucket": {
                   "type": "string"
@@ -874,9 +852,7 @@
               "properties": {
                 "provider": {
                   "type": "string",
-                  "enum": [
-                    "cloudflare-r2"
-                  ]
+                  "enum": ["cloudflare-r2"]
                 },
                 "bucket": {
                   "type": "string"

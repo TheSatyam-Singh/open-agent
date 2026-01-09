@@ -3,6 +3,7 @@ import './src/prelude';
 import './src/app.module';
 
 import fs from 'node:fs';
+import path from 'node:path';
 import { ProjectRoot } from '@afk-tools/utils/path';
 import {
   getDescriptors as getAllDescriptors,
@@ -58,6 +59,7 @@ function generateJsonSchema(outputPath: string) {
     });
   });
 
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(schema, null, 2));
 
   console.log(`Config schema generated at: ${outputPath}`);
@@ -99,7 +101,7 @@ function generateAdminConfigJson(outputPath: string) {
 }
 
 function main() {
-  generateJsonSchema(ProjectRoot.join('.docker', 'schema.json').toString());
+  generateJsonSchema(ProjectRoot.join('config', 'schema.json').toString());
 }
 
 main();
